@@ -1,6 +1,8 @@
 # Sitecore.React
 ===
 
+[![NuGet version](http://img.shields.io/nuget/v/Sitecore.React.svg)](https://www.nuget.org/packages/Sitecore.React/)
+
 A ReactJS module for building Sitecore components with [React](https://facebook.github.io/react/) and [ReactJS.NET](reactjs.net).
 
 The module has 2 parts. A Sitecore package that installs the required `JsxControllerRendering` and `JxsViewRendering` templates, and the Nuget package for use in your projects. This adds the required pipeline processors and components to render the React Jsx files as Sitecore renderings.
@@ -14,13 +16,13 @@ Features
 Getting Started
 ---
 
-1. Install the  NuGet package
+- Install the  NuGet package
 ```
 Install-Package Sitecore.React
 ```
 
-2. Install the [Sitecore package]()
-3. Create your `JsxControllerRendering` controller and action
+- Install the [Sitecore package]()
+Create your `JsxControllerRendering` controller and action
 ```c#
 public SampleReactController : Controller 
 {
@@ -36,7 +38,7 @@ public SampleReactController : Controller
 }
 ```
 
-4. Create your Jsx component
+- Create your Jsx component
 ```javascript
 var SampleReactRendering = React.createClass({
     render: function() {
@@ -50,8 +52,8 @@ var SampleReactRendering = React.createClass({
 });
 ```
 
-5. Create the rendering item in Sitecore and assign to an items presentation
-6. Add the React JavaScript links and the Jsx bundle to your main layout
+- Create the rendering item in Sitecore and assign to an items presentation
+- Add the React JavaScript links and the Jsx bundle to your main layout
 
 ```cshtml
   <script src="//fb.me/react-15.0.1.js"></script>
@@ -59,4 +61,4 @@ var SampleReactRendering = React.createClass({
   @Scripts.Render("~/bundles/react")
 ```
 
-7. Have fun
+- Have fun
