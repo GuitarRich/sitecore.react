@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Sitecore.React</id>
+        <version>1.0.0</version>
+        <title>Sitecore React Module</title>
+        <authors>Richard Seal</authors>
+        <owners>Richard Seal</owners>
+        <licenseUrl>https://raw.githubusercontent.com/GuitarRich/sitecore.react/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/GuitarRich/sitecore.react</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/GuitarRich/sitecore.react/master/icon/favicon.ico</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A module for creating Sitecore components using React</description>
+        <copyright>Richard Seal (c) 2016</copyright>
+        <language />
+        <tags>Sitecore, React, ReactJS</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework0.0">
+                <dependency id="React.Web.Mvc4" version="2.5.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\..\src\Sitecore.React\bin\Sitecore.React.dll" target="lib\net452\Sitecore.React.dll" />
+        <file src="readme.txt" target="readme.txt" />
+    </files>
+</package>
