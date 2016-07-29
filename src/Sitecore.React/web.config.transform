@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<configuration  xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<runtime xdt:Transform="InsertIfMissing">
+		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1" xdt:Transform="InsertIfMissing">
+			<dependentAssembly xdt:Transform="Insert">
+				<assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" />
+				<bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234"/>
+			</dependentAssembly>
+		</assemblyBinding>
+	</runtime>
+</configuration>
