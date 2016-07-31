@@ -1,4 +1,4 @@
-# Sitecore.React
+Sitecore.React
 ===
 
 [![NuGet version](http://img.shields.io/nuget/v/Sitecore.React.svg)](https://www.nuget.org/packages/Sitecore.React/)
@@ -21,7 +21,7 @@ Getting Started
 Install-Package Sitecore.React
 ```
 
-- Install the [Sitecore package]()
+- Install the [Sitecore package](https://github.com/GuitarRich/sitecore.react/raw/master/build/Sitecore%20Package/SitecoreReact-1.0.0.zip)
 Create your `JsxControllerRendering` controller and action
 ```c#
 public SampleReactController : Controller 
