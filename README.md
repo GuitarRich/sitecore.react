@@ -61,4 +61,11 @@ var SampleReactRendering = React.createClass({
   @Scripts.Render("~/bundles/react")
 ```
 
-- Have fun
+- To add a placeholder to the component use:
+
+```JavaScript
+{this.props.placeholder.KEY}
+```
+  Replace **KEY** with the placeholder key you want to create.
+
+- To make the placeholder dynamic, prepend the key with `$Id.`

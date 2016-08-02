@@ -119,7 +119,7 @@ namespace Sitecore.React.Mvc
 			const string NoPlaceholders = "NONE";
 
 			var placeholderRegEx = Settings.GetSetting("React.PlaceholderRegEx", @"\{this\.props\.placeholders\.([\$A-Za-z\.\-_\ ]+)}");
-			var placeholderStart = Settings.GetSetting("React.PlaceholderStartsWith", @"{this.props.placeholders");
+			var placeholderStart = Settings.GetSetting("React.PlaceholderStartsWith", @"{this.props.placeholder");
 			var placeholderEnd = Settings.GetSetting("React.PlaceholderEndsWith", @"}");
 
 			var htmlCache = Caching.CacheManager.GetHtmlCache(Context.Site);
@@ -160,7 +160,7 @@ namespace Sitecore.React.Mvc
 			dynamic placeholders = new ExpandoObject();
 			var placeholdersDictionary = (IDictionary<string, object>)placeholders;
 
-			propsDictionary["placeholders"] = placeholders;
+			propsDictionary["placeholder"] = placeholders;
 			propsDictionary["data"] = viewModel;
 
 			//var placeholdersField = this.Rendering.RenderingItem.InnerItem["Place Holders"];

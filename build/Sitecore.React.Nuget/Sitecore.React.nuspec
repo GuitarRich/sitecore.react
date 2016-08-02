@@ -2,15 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Sitecore.React</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <title>Sitecore React Module</title>
         <authors>Richard Seal</authors>
         <owners>Richard Seal</owners>
         <licenseUrl>https://raw.githubusercontent.com/GuitarRich/sitecore.react/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/GuitarRich/sitecore.react</projectUrl>
-        <iconUrl>https://raw.githubusercontent.com/GuitarRich/sitecore.react/master/icon/favicon.ico</iconUrl>
+        <iconUrl>https://facebook.github.io/react/favicon.ico</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>A module for creating Sitecore components using React</description>
+        <releaseNotes>https://github.com/GuitarRich/sitecore.react</releaseNotes>
         <copyright>Richard Seal (c) 2016</copyright>
         <language />
         <tags>Sitecore, React, ReactJS</tags>

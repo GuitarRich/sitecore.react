@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ReactConfig.cs" />
+    <Compile Include="Configuration\Settings.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Mvc\Controllers\ControllerExtensions.cs" />
     <Compile Include="Mvc\JsxResult.cs" />
@@ -182,7 +183,9 @@
     <Content Include="App_Config\Include\Sitecore.React\Sitecore.React.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Config\Include\Sitecore.React\Sitecore.React.Serialization.config">
       <SubType>Designer</SubType>
     </Content>

@@ -6,6 +6,7 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Pipelines.Response.GetPageRendering;
 using Sitecore.Mvc.Presentation;
+using Sitecore.React.Configuration;
 using Sitecore.React.Repositories;
 using ReactSiteConfiguration = React.ReactSiteConfiguration;
 
@@ -18,7 +19,7 @@ namespace Sitecore.React.Pipelines.GetPageRendering
 			this.AddRenderingAssets(args.PageContext.PageDefinition.Renderings);
 
 			// Create the bundle for the render
-			var bundle = new BabelBundle("~/bundles/react");
+			var bundle = new BabelBundle(Settings.ReactBundleName);
 
 			foreach (var jsxFile in JsxRepository.Current.Items)
 			{
