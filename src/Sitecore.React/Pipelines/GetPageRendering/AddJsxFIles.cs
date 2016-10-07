@@ -12,7 +12,7 @@ using ReactSiteConfiguration = React.ReactSiteConfiguration;
 
 namespace Sitecore.React.Pipelines.GetPageRendering
 {
-	public class AddJsxFIles : GetPageRenderingProcessor
+	public class AddJsxFiles : GetPageRenderingProcessor
 	{
 		public override void Process(GetPageRenderingArgs args)
 		{

@@ -174,7 +174,7 @@
     <Compile Include="Mvc\JsxResult.cs" />
     <Compile Include="Mvc\JsxView.cs" />
     <Compile Include="Mvc\JsxViewEngine.cs" />
-    <Compile Include="Pipelines\GetPageRendering\AddJsxFIles.cs" />
+    <Compile Include="Pipelines\GetPageRendering\AddJsxFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\JsxRepository.cs" />
     <Compile Include="Templates.cs" />
