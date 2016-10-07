@@ -22,7 +22,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-libs/
+libs/Sitecore/*.DLL
 
 # Visual Studio 2015 cache/options directory
 .vs/
