@@ -1,0 +1,1 @@
+Place Sitecore.Kernel.DLL and Sitecore.Mvc.DLL in this folder.

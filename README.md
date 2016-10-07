@@ -26,14 +26,14 @@ Create your `JsxControllerRendering` controller and action
 ```c#
 public SampleReactController : Controller 
 {
-	public ActionResult SampleReactRendering 
+	public ActionResult SampleReactRendering() 
 	{
 		var data = new {
-			Title = FieldRenderer(Sitecore.Context.Item, "Title"),
-			Body = FieldRenderer(Sitecore.Context.Item, "Body")
+			Title = FieldRenderer.Render(Sitecore.Context.Item, "Title"),
+			Text = FieldRenderer.Render(Sitecore.Context.Item, "Text")
 		};
 
-		return this.React("~/views/react/SampleReactRendering.jsx", data);
+		return this.React("~/views/SampleReact/SampleReactRendering.jsx", data);
 	}
 }
 ```
@@ -45,7 +45,7 @@ var SampleReactRendering = React.createClass({
         return (
             <div>
                 <h1 dangerouslySetInnerHTML={{__html: this.props.data.Title}}></h1>
-                <div dangerouslySetInnerHTML={{__html: this.props.data.Body}}></div>
+                <div dangerouslySetInnerHTML={{__html: this.props.data.Text}}></div>
             </div>
         );
     }
@@ -58,7 +58,7 @@ var SampleReactRendering = React.createClass({
 ```cshtml
   <script src="//fb.me/react-15.0.1.js"></script>
   <script src="//fb.me/react-dom-15.0.1.js"></script>
-  @Scripts.Render("~/bundles/react")
+  @Scripts.Render(Sitecore.React.Configuration.Settings.ReactBundleName)
 ```
 
 - To add a placeholder to the component use:
