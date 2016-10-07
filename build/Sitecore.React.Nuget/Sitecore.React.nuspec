@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Sitecore.React</id>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <title>Sitecore React Module</title>
         <authors>Richard Seal</authors>
         <owners>Richard Seal</owners>
@@ -18,12 +18,15 @@
         <dependencies>
             <group targetFramework=".NETFramework0.0">
                 <dependency id="React.Web.Mvc4" version="2.5.0" />
+                <dependency id="System.Web.Optimization.React" version="2.5.0" />
                 <dependency id="WebGrease" version="1.5.2" />
                 <dependency id="Antlr" version="3.1.4" />
             </group>
         </dependencies>
     </metadata>
     <files>
+        <file src="..\..\src\Sitecore.React\App_Config\Include\Sitecore.React\Sitecore.React.config" target="content\App_Config\Include\Sitecore.React\Sitecore.React.config" />
+        <file src="..\..\src\Sitecore.React\Views\web.config.transform" target="content\Views\web.config.transform" />
         <file src="..\..\src\Sitecore.React\bin\Sitecore.React.dll" target="lib\net452\Sitecore.React.dll" />
         <file src="readme.txt" target="readme.txt" />
     </files>
