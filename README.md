@@ -30,7 +30,7 @@ public SampleReactController : Controller
 	{
 		var data = new {
 			Title = FieldRenderer.Render(Sitecore.Context.Item, "Title"),
-			Body = FieldRenderer.Render(Sitecore.Context.Item, "Text")
+			Text = FieldRenderer.Render(Sitecore.Context.Item, "Text")
 		};
 
 		return this.React("~/views/SampleReact/SampleReactRendering.jsx", data);
@@ -45,7 +45,7 @@ var SampleReactRendering = React.createClass({
         return (
             <div>
                 <h1 dangerouslySetInnerHTML={{__html: this.props.data.Title}}></h1>
-                <div dangerouslySetInnerHTML={{__html: this.props.data.Body}}></div>
+                <div dangerouslySetInnerHTML={{__html: this.props.data.Text}}></div>
             </div>
         );
     }
