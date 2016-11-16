@@ -118,7 +118,7 @@ namespace Sitecore.React.Mvc
 		{
 			const string NoPlaceholders = "NONE";
 
-			var placeholderRegEx = Settings.GetSetting("React.PlaceholderRegEx", @"\{this\.props\.placeholders\.([\$A-Za-z\.\-_\ ]+)}");
+			var placeholderRegEx = Settings.GetSetting("React.PlaceholderRegEx", @"\{this\.props\.placeholder\.([\$A-Za-z\.\-_\ ]+)}");
 			var placeholderStart = Settings.GetSetting("React.PlaceholderStartsWith", @"{this.props.placeholder");
 			var placeholderEnd = Settings.GetSetting("React.PlaceholderEndsWith", @"}");
 
