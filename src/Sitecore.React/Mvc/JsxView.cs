@@ -97,6 +97,9 @@ namespace Sitecore.React.Mvc
 
 			IReactComponent reactComponent = this.Environment.CreateComponent(componentName, props);
 			writer.WriteLine(reactComponent.RenderHtml());
+			writer.Write("<script>");
+			writer.Write(reactComponent.RenderJavaScript());
+			writer.WriteLine("</script>");
 		}
 
 		private IReactEnvironment Environment
