@@ -7,10 +7,10 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
-using Sitecore.Configuration;
 using Sitecore.Extensions.StringExtensions;
 using Sitecore.Mvc;
 using Sitecore.Mvc.Presentation;
+using HtmlHelperExtensions = React.Web.Mvc.HtmlHelperExtensions;
 using IReactComponent = React.IReactComponent;
 using IReactEnvironment = React.IReactEnvironment;
 using ReactEnvironment = React.ReactEnvironment;
@@ -45,7 +45,7 @@ namespace Sitecore.React.Mvc
 		/// <param name="runViewStartPages">A value that indicates whether view start files should be executed before the view.</param>
 		/// <param name="viewStartFileExtensions">The set of extensions that will be used when looking up view start files.</param>
 		public JsxView(ControllerContext controllerContext, string viewPath, string layoutPath, bool runViewStartPages, IEnumerable<string> viewStartFileExtensions)
-		  : this(controllerContext, viewPath, layoutPath, runViewStartPages, viewStartFileExtensions, (IViewPageActivator)null)
+		  : this(controllerContext, viewPath, layoutPath, runViewStartPages, viewStartFileExtensions, null)
 		{
 		}
 
@@ -95,11 +95,15 @@ namespace Sitecore.React.Mvc
 			var componentName = Path.GetFileNameWithoutExtension(this.ViewPath)?.Replace("-", string.Empty);
 			var props = this.GetProps(viewContext.ViewData.Model, placeholderKeys);
 
-			IReactComponent reactComponent = this.Environment.CreateComponent(componentName, props);
-			writer.WriteLine(reactComponent.RenderHtml());
-			writer.Write("<script>");
-			writer.Write(reactComponent.RenderJavaScript());
-			writer.WriteLine("</script>");
+		    IReactComponent reactComponent = this.Environment.CreateComponent($"Components.{componentName}", props, "sitcore-react-app");
+		    writer.WriteLine(reactComponent.RenderHtml());
+
+		        //var tagBuilder = new TagBuilder("script")
+		        //{
+		        //    InnerHtml = reactComponent.RenderJavaScript()
+		        //};
+		        //writer.Write(System.Environment.NewLine);
+		        //writer.Write(tagBuilder.ToString());
 		}
 
 		private IReactEnvironment Environment
@@ -119,43 +123,70 @@ namespace Sitecore.React.Mvc
 
 		protected virtual string[] GetPlaceholders(string viewPath)
 		{
-			const string NoPlaceholders = "NONE";
+			const string noPlaceholders = "NONE";
 
-			var placeholderRegEx = Settings.GetSetting("React.PlaceholderRegEx", @"\{this\.props\.placeholder\.([\$A-Za-z\.\-_\ ]+)}");
-			var placeholderStart = Settings.GetSetting("React.PlaceholderStartsWith", @"{this.props.placeholder");
-			var placeholderEnd = Settings.GetSetting("React.PlaceholderEndsWith", @"}");
+		    const string placeholderRegEx = @"<Placeholder\b[^>]*>";
+		    const string keyRegEx = "placeholderKey={['\"](?<name>[\\$A-Za-z\\.\\-_\\ ]+)['\"]}";
+            const string isDynamicRegEx = "isDynamic=[{]?['\"]?(?<dynamic>\\w +)['\"]?[}]?";
 
-			var htmlCache = Caching.CacheManager.GetHtmlCache(Context.Site);
-			var cacheKey = $"$React.PlaceholderKeys.{viewPath}";
-			var keys = htmlCache?.GetHtml(cacheKey);
-			if (!string.IsNullOrWhiteSpace(keys))
-			{
-				return keys.Equals(NoPlaceholders) ? new string[0] : keys.Split(Constants.Comma, StringSplitOptions.RemoveEmptyEntries);
-			}
+            var htmlCache = Caching.CacheManager.GetHtmlCache(Context.Site);
+            var cacheKey = $"$React.PlaceholderKeys.{viewPath}";
+            var keys = htmlCache?.GetHtml(cacheKey);
+            if (!string.IsNullOrWhiteSpace(keys))
+            {
+                return keys.Equals(noPlaceholders) ? new string[0] : keys.Split(Constants.Comma, StringSplitOptions.RemoveEmptyEntries);
+            }
 
-			var jsxContents = File.ReadAllText(HttpContext.Current.Server.MapPath(viewPath));
-			if (string.IsNullOrWhiteSpace(jsxContents))
-			{
-				return new string[0];
-			}
+            var placeholderKeys = new List<string>();
 
-			var regex = new Regex(placeholderRegEx);
-			var matches = regex.Matches(jsxContents);
+            // TODO: remove the dependency on HttpContext.Current here
+            var jsxContents = File.ReadAllText(HttpContext.Current.Server.MapPath(viewPath));
+		    if (string.IsNullOrWhiteSpace(jsxContents))
+		    {
+		    	return new string[0];
+		    }
 
-			var placeholderKeys = (from Match match in matches
-								   select match.Value.Replace(placeholderStart, string.Empty).Replace(placeholderEnd, string.Empty)).ToArray();
+		    var regex = new Regex(placeholderRegEx);
+		    var matches = regex.Matches(jsxContents);
 
-			// Make sure we set the cache with the placeholder keys. Even if there are not 
-			// any keys - this should make subsequent calls faster as they will not have to 
-			// do the regex search.
-			htmlCache?.SetHtml(cacheKey, placeholderKeys.Any() ? string.Join(",", placeholderKeys) : NoPlaceholders);
+		    foreach (Match match in matches)
+		    {
+                var plRegEx = new Regex(keyRegEx);
+		        var placeholderKeyMatches = plRegEx.Matches(match.Value);
 
-			return placeholderKeys;
-		}
+                if (placeholderKeyMatches.Count == 1)
+		        {
+                    // there should only ever be ONE
+		            var dynRexEx = new Regex(isDynamicRegEx);
+		            var isDynamicMatches = dynRexEx.Matches(match.Value);
 
-		internal Rendering Rendering => RenderingContext.Current.Rendering;
+		            var dynamicPrefix = string.Empty;
+		            if (isDynamicMatches.Count == 1)
+		            {
+		                bool isDynamic;
+		                // there should only ever be ONE
+		                bool.TryParse(isDynamicMatches[0].Value, out isDynamic);
+		                dynamicPrefix = isDynamic ? "$Id." : string.Empty;
+		            }
 
-		protected virtual dynamic GetProps(object viewModel, string[] placeholderKeys)
+		            placeholderKeys.Add(dynamicPrefix + placeholderKeyMatches[0].Groups["name"].Value);
+                }
+            }
+
+            // Make sure we set the cache with the placeholder keys. Even if there are not 
+            // any keys - this should make subsequent calls faster as they will not have to 
+            // do the regex search.
+            htmlCache?.SetHtml(cacheKey, placeholderKeys.Any() ? string.Join(",", placeholderKeys) : noPlaceholders);
+
+            return placeholderKeys.ToArray();
+        }
+
+	    internal Rendering Rendering
+	    {
+	        get { return RenderingContext.Current.Rendering; }
+	    }
+
+	    protected virtual dynamic GetProps(object viewModel, string[] placeholderKeys)
 		{
 			dynamic props = new ExpandoObject();
 			var propsDictionary = (IDictionary<string, object>)props;

@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Sitecore.React.Mvc
 {
@@ -18,36 +21,48 @@ namespace Sitecore.React.Mvc
 			this.AreaViewLocationFormats = new []
 			{
 				"~/Areas/{2}/Views/{1}/{0}.jsx",
-				"~/Areas/{2}/Views/Shared/{0}.jsx"
-			};
+				"~/Areas/{2}/Views/Shared/{0}.jsx",
+			    "~/Areas/{2}/Views/{1}/{0}.js",
+			    "~/Areas/{2}/Views/Shared/{0}.js"
+            };
 			this.AreaMasterLocationFormats = new []
 			{
 				"~/Areas/{2}/Views/{1}/{0}.jsx",
-				"~/Areas/{2}/Views/Shared/{0}.jsx"
-			};
+				"~/Areas/{2}/Views/Shared/{0}.jsx",
+			    "~/Areas/{2}/Views/{1}/{0}.js",
+			    "~/Areas/{2}/Views/Shared/{0}.js"
+            };
 			this.AreaPartialViewLocationFormats = new []
 			{
 				"~/Areas/{2}/Views/{1}/{0}.jsx",
-				"~/Areas/{2}/Views/Shared/{0}.jsx"
-			};
+				"~/Areas/{2}/Views/Shared/{0}.jsx",
+			    "~/Areas/{2}/Views/{1}/{0}.js",
+			    "~/Areas/{2}/Views/Shared/{0}.js"
+            };
 			this.ViewLocationFormats = new []
 			{
 				"~/Views/{1}/{0}.jsx",
-				"~/Views/Shared/{0}.jsx"
-			};
+				"~/Views/Shared/{0}.jsx",
+			    "~/Views/{1}/{0}.js",
+			    "~/Views/Shared/{0}.js"
+            };
 			this.MasterLocationFormats = new []
 			{
 				"~/Views/{1}/{0}.jsx",
-				"~/Views/Shared/{0}.jsx"
-			};
+				"~/Views/Shared/{0}.jsx",
+			    "~/Views/{1}/{0}.js",
+			    "~/Views/Shared/{0}.js"
+            };
 			this.PartialViewLocationFormats = new []
 			{
 				"~/Views/{1}/{0}.jsx",
-				"~/Views/Shared/{0}.jsx"
-			};
+				"~/Views/Shared/{0}.jsx",
+                "~/Views/{1}/{0}.js",
+			    "~/Views/Shared/{0}.js"
+            };
 			this.FileExtensions = new []
 			{
-				"jsx"
+				"jsx", "js"
 			};
 		}
 
@@ -75,5 +90,5 @@ namespace Sitecore.React.Mvc
 				DisplayModeProvider = this.DisplayModeProvider
 			};
 		}
-	}
+    }
 }

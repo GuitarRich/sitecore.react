@@ -4,6 +4,11 @@ namespace Sitecore.React.Mvc.Controllers
 {
 	public static class ControllerExtensions
 	{
+	    public static JsxResult React(this Controller controller, string viewName)
+	    {
+	        return controller.React(viewName, new object());
+	    }
+
 		public static JsxResult React(this Controller controller, string viewName, object model)
 		{
 			return controller.React(viewName, model, viewName);

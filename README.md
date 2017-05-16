@@ -69,3 +69,7 @@ var SampleReactRendering = React.createClass({
   Replace **KEY** with the placeholder key you want to create.
 
 - To make the placeholder dynamic, prepend the key with `$Id.`
+
+```JavaScript
+{this.props.placeholder.$Id.KEY}
+```

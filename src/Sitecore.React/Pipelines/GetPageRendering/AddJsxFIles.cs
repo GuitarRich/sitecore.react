@@ -16,10 +16,16 @@ namespace Sitecore.React.Pipelines.GetPageRendering
 	{
 		public override void Process(GetPageRenderingArgs args)
 		{
+            // saftey check - if the config is set to webpack, don't run this pipeline or it will fail.
+		    if (ReactSettingsProvider.Current.BundleType == Settings.BundleTypes.Webpack)
+		    {
+		        return;
+		    }
+
 			this.AddRenderingAssets(args.PageContext.PageDefinition.Renderings);
 
 			// Create the bundle for the render
-			var bundle = new BabelBundle(Settings.ReactBundleName);
+			var bundle = new BabelBundle(ReactSettingsProvider.Current.BundleName);
 
 			foreach (var jsxFile in JsxRepository.Current.Items)
 			{
@@ -76,13 +82,13 @@ namespace Sitecore.React.Pipelines.GetPageRendering
 
 		private Item GetRenderingItem(Rendering rendering)
 		{
-			if (rendering.RenderingItem == null)
-			{
-				Log.Warn($"rendering.RenderingItem is null for {rendering.RenderingItemPath}", this);
-				return null;
-			}
+		    if (rendering.RenderingItem != null)
+		    {
+		        return rendering.RenderingItem.InnerItem;
+		    }
 
-			return rendering.RenderingItem.InnerItem;
+		    Log.Warn($"rendering.RenderingItem is null for {rendering.RenderingItemPath}", this);
+		    return null;
 		}
 	}
 }
