@@ -95,16 +95,16 @@ namespace Sitecore.React.Mvc
 			var componentName = Path.GetFileNameWithoutExtension(this.ViewPath)?.Replace("-", string.Empty);
 			var props = this.GetProps(viewContext.ViewData.Model, placeholderKeys);
 
-		    IReactComponent reactComponent = this.Environment.CreateComponent($"Components.{componentName}", props, "sitcore-react-app");
+		    IReactComponent reactComponent = this.Environment.CreateComponent($"Components.{componentName}", props);
 		    writer.WriteLine(reactComponent.RenderHtml());
 
-		        //var tagBuilder = new TagBuilder("script")
-		        //{
-		        //    InnerHtml = reactComponent.RenderJavaScript()
-		        //};
-		        //writer.Write(System.Environment.NewLine);
-		        //writer.Write(tagBuilder.ToString());
-		}
+            var tagBuilder = new TagBuilder("script")
+            {
+                InnerHtml = reactComponent.RenderJavaScript()
+            };
+            writer.Write(System.Environment.NewLine);
+            writer.Write(tagBuilder.ToString());
+        }
 
 		private IReactEnvironment Environment
 		{
@@ -126,7 +126,7 @@ namespace Sitecore.React.Mvc
 			const string noPlaceholders = "NONE";
 
 		    const string placeholderRegEx = @"<Placeholder\b[^>]*>";
-		    const string keyRegEx = "placeholderKey={['\"](?<name>[\\$A-Za-z\\.\\-_\\ ]+)['\"]}";
+		    const string keyRegEx = "placeholderKey={['\"](?<name>[\\$A-Za-z0-9\\.\\-_\\ ]+)['\"]}";
             const string isDynamicRegEx = "isDynamic=[{]?['\"]?(?<dynamic>\\w +)['\"]?[}]?";
 
             var htmlCache = Caching.CacheManager.GetHtmlCache(Context.Site);
@@ -195,10 +195,10 @@ namespace Sitecore.React.Mvc
 			var placeholdersDictionary = (IDictionary<string, object>)placeholders;
 
 			propsDictionary["placeholder"] = placeholders;
-			propsDictionary["data"] = viewModel;
+            propsDictionary["data"] = viewModel;
+            propsDictionary["isSitecore"] = true;
+            propsDictionary["isEditing"] = Context.PageMode.IsExperienceEditor;
 
-			//var placeholdersField = this.Rendering.RenderingItem.InnerItem["Place Holders"];
-			//if (string.IsNullOrEmpty(placeholdersField))
 			if (!placeholderKeys.Any())
 			{
 				return props;
@@ -207,10 +207,8 @@ namespace Sitecore.React.Mvc
 			var controlId = this.Rendering.Parameters["id"] ?? string.Empty;
 			dynamic placeholderId = null;
 
-			//var placeholderKeys = placeholdersField.Split(Constants.Comma, StringSplitOptions.RemoveEmptyEntries).Select(p => p.Trim()).ToList();
 			foreach (var placeholderKey in placeholderKeys)
 			{
-				// TODO: add this as a config setting
 				if (placeholderKey.StartsWith("$Id."))
 				{
 					if (placeholderId == null)
