@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.React", "src\Sitecore.React\Sitecore.React.csproj", "{A44D104F-02FC-4F13-8F78-C265E861B572}"
 EndProject
@@ -20,7 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module", "Module", "{72C9F2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{3C75FAB8-A837-4A80-8CD8-C8D0409E0B52}"
 	ProjectSection(SolutionItems) = preProject
+		pack.ps1 = pack.ps1
 		build\Sitecore.React.Nuget\Sitecore.React.nuspec = build\Sitecore.React.Nuget\Sitecore.React.nuspec
+		build\Sitecore.React.Nuget\Sitecore.React.Web.nuspec = build\Sitecore.React.Nuget\Sitecore.React.Web.nuspec
 	EndProjectSection
 EndProject
 Global

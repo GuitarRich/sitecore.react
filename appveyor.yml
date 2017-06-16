@@ -13,3 +13,5 @@ assembly_info:
 test: off
 before_build:
   - nuget restore Sitecore.React.sln
+after_build:
+  - ps: .\build\pack.ps1
