@@ -1,31 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Sitecore.React</id>
+        <id>Sitecore.React.Web</id>
         <version>$version$</version>
-        <title>Sitecore React Module</title>
+        <title>Sitecore React Config</title>
         <authors>Richard Seal</authors>
         <owners>Richard Seal</owners>
         <licenseUrl>https://raw.githubusercontent.com/GuitarRich/sitecore.react/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/GuitarRich/sitecore.react</projectUrl>
         <iconUrl>https://facebook.github.io/react/favicon.ico</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>A module for creating Sitecore components using React</description>
+        <description>The config required for the Sitecore web project</description>
         <releaseNotes>https://github.com/GuitarRich/sitecore.react</releaseNotes>
         <copyright>Richard Seal (c) 2016-2017</copyright>
         <language />
         <tags>Sitecore, React, ReactJS</tags>
         <dependencies>
             <group targetFramework=".NETFramework0.0">
-                <dependency id="React.Web.Mvc4" version="2.5.0" />
-                <dependency id="System.Web.Optimization.React" version="2.5.0" />
-                <dependency id="WebGrease" version="1.5.2" />
-                <dependency id="Antlr" version="3.1.4" />
+                <dependency id="Sitecore.React" version="2.0.0" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="..\..\src\Sitecore.React\bin\Sitecore.React.dll" target="lib\net452\Sitecore.React.dll" />
+        <file src="..\..\src\Sitecore.React\App_Config\Include\Sitecore.React\Sitecore.React.config" target="content\App_Config\Include\Sitecore.React\Sitecore.React.config" />
+        <file src="..\..\src\Sitecore.React\Views\web.config.transform" target="content\Views\web.config.transform" />
         <file src="readme.txt" target="readme.txt" />
     </files>
 </package>
