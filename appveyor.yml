@@ -14,4 +14,4 @@ test: off
 before_build:
   - nuget restore Sitecore.React.sln
 after_build:
-  - ps: .\build\pack.ps1
+  - ps: .\pack.ps1

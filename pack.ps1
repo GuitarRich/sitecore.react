@@ -1,4 +1,4 @@
-$root = (split-path -parent $MyInvocation.MyCommand.Definition) + '\..'
+$root = (split-path -parent $MyInvocation.MyCommand.Definition)
 $version = [System.Reflection.Assembly]::LoadFile("$root\src\Sitecore.React\bin\Release\SitecoreReact.dll").GetName().Version
 $versionStr = "{0}.{1}.{2}" -f ($version.Major, $version.Minor, $version.Build)
 
