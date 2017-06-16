@@ -16,6 +16,5 @@ before_build:
 after_build:
   - ps: .\pack.ps1
 image: Visual Studio 2017
-configuration: Release
 nuget:
   project_feed: true
