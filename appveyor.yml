@@ -10,5 +10,7 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
+test_script:
+- ps: xunit.console .\src\Sitecore.React.Tests\Bin\Release\Sitecore.React.Tests.dll /appveyor
 before_build:
   - nuget restore Sitecore.React.sln
