@@ -1,6 +1,4 @@
 version: 1.0.{build}
-before_build:
-- ps: nuget restore
 build:
   verbosity: minimal
 pull_requests:
