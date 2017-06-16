@@ -8,8 +8,8 @@
     <ProjectGuid>{EC2C5218-7C4E-4010-820B-8F2593E77AE3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sitecore.Foundation.Alerts.Tests</RootNamespace>
-    <AssemblyName>Sitecore.Foundation.Alerts.Tests</AssemblyName>
+    <RootNamespace>Sitecore.React.Tests</RootNamespace>
+    <AssemblyName>Sitecore.React.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
