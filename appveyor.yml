@@ -49,4 +49,4 @@ deploy:
   symbol_server: https://ci.appveyor.com/nuget/sitecore-react-vgd5n8xvyw00/api/v2/package
   api_key:
     secure: 7gjxcs5gkjkq1ltqycvdmipt
-   artifact: /.*\.nupkg/
+  artifact: /.*\.nupkg/
