@@ -18,6 +18,8 @@ test: off
 before_build:
   - nuget restore Sitecore.React.sln
 image: Visual Studio 2017
+after_build:
+  - ps: .\pack.ps1
 nuget:
   project_feed: true
 deploy:
