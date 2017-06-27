@@ -17,14 +17,15 @@
         <tags>Sitecore, React, ReactJS</tags>
         <dependencies>
             <group targetFramework=".NETFramework0.0">
-                <dependency id="React.Web.Mvc4" version="3.0.1" />
-                <dependency id="System.Web.Optimization.React" version="3.0.1" />
+                <dependency id="React.Web.Mvc4" version="2.5.0" />
+                <dependency id="System.Web.Optimization.React" version="2.5.0" />
                 <dependency id="WebGrease" version="1.5.2" />
-                <dependency id="Antlr" version="3.4.1" />
+                <dependency id="Antlr" version="3.1.4" />
             </group>
         </dependencies>
     </metadata>
     <files>
         <file src="..\..\src\Sitecore.React\bin\Sitecore.React.dll" target="lib\net452\Sitecore.React.dll" />
+        <file src="readme.txt" target="readme.txt" />
     </files>
 </package>

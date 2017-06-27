@@ -23,7 +23,5 @@
     </metadata>
     <files>
         <file src="..\..\src\Sitecore.React\App_Config\Include\Sitecore.React\Sitecore.React.config" target="content\App_Config\Include\Sitecore.React\Sitecore.React.config" />
-        <file src="..\..\src\Sitecore.React\Views\web.config.transform" target="content\Views\web.config.transform" />
-        <file src="readme.txt" target="readme.txt" />
     </files>
 </package>

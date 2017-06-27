@@ -33,13 +33,6 @@ image: Visual Studio 2017
 after_build:
   - ps: .\pack.ps1
 deploy:
-- provider: GitHub
-  tag: release/rtm/$(appveyor_build_version)
-  release: release
-  description: Release Build
-  auth_token:
-    secure: SjdWG5RSLacrssJD/npA2zCSJnqhmRO76buFXohGA2Bytl8qbidt2TbBDpKhTwhc
-  prerelease: true
 - provider: NuGet
   server: https://ci.appveyor.com/nuget/guitarrich-2gfg89qeypb5
   api_key:
