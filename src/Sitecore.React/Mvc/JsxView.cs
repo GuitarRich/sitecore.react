@@ -16,6 +16,7 @@ using IReactEnvironment = React.IReactEnvironment;
 using ReactEnvironment = React.ReactEnvironment;
 using ReactNotInitialisedException = React.Exceptions.ReactNotInitialisedException;
 using TinyIoCResolutionException = React.TinyIoC.TinyIoCResolutionException;
+using Sitecore.React.Configuration;
 
 namespace Sitecore.React.Mvc
 {
@@ -96,14 +97,22 @@ namespace Sitecore.React.Mvc
 			var props = this.GetProps(viewContext.ViewData.Model, placeholderKeys);
 
 		    IReactComponent reactComponent = this.Environment.CreateComponent($"Components.{componentName}", props);
-		    writer.WriteLine(reactComponent.RenderHtml());
+		    if (ReactSettingsProvider.Current.EnableClientside)
+		    {
+		        writer.WriteLine(reactComponent.RenderHtml());
 
-            var tagBuilder = new TagBuilder("script")
-            {
-                InnerHtml = reactComponent.RenderJavaScript()
-            };
-            writer.Write(System.Environment.NewLine);
-            writer.Write(tagBuilder.ToString());
+		        var tagBuilder = new TagBuilder("script")
+		        {
+		            InnerHtml = reactComponent.RenderJavaScript()
+		        };
+
+		        writer.Write(System.Environment.NewLine);
+		        writer.Write(tagBuilder.ToString());
+		    }
+		    else
+		    {
+		        writer.WriteLine(reactComponent.RenderHtml(renderServerOnly: true));
+		    }
         }
 
 		private IReactEnvironment Environment
