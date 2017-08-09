@@ -96,7 +96,7 @@ namespace Sitecore.React.Mvc
 			var componentName = Path.GetFileNameWithoutExtension(this.ViewPath)?.Replace("-", string.Empty);
 			var props = this.GetProps(viewContext.ViewData.Model, placeholderKeys);
 
-		    IReactComponent reactComponent = this.Environment.CreateComponent($"Components.{componentName}", props);
+		    IReactComponent reactComponent = this.Environment.CreateComponent($"Components_{componentName}", props);
 		    if (ReactSettingsProvider.Current.EnableClientside)
 		    {
 		        writer.WriteLine(reactComponent.RenderHtml());

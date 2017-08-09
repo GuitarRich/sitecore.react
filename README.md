@@ -39,8 +39,11 @@ public SampleReactController : Controller
 ```
 
 - Create your Jsx component
+
+<span style="color:#238567">It's requried to have **Components_** prefix as in the code component it created with name **Components__{ComponentName}**</span>
+
 ```javascript
-var SampleReactRendering = React.createClass({
+var Components_SampleReactRendering = React.createClass({
     render: function() {
         return (
             <div>
