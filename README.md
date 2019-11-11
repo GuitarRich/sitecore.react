@@ -10,6 +10,7 @@ The module has 2 parts. A Sitecore package that installs the required `JsxContro
 Features
 ---
 * On the fly Jsx to JavaScript compilation via [Babel](http://babeljs.io/) and [ReactJS.NET](http://reactjs.net)
+* Support for pre-built/transpiled
 * Server-side component rendering. Initial renders are super-fast and great for SEO
 * Full support for datasources, personalization and testing
 

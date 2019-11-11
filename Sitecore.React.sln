@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.React", "src\Sitecore.React\Sitecore.React.csproj", "{A44D104F-02FC-4F13-8F78-C265E861B572}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.React.Tests", "src\Sitecore.React.Tests\Sitecore.React.Tests.csproj", "{EC2C5218-7C4E-4010-820B-8F2593E77AE3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{8240142A-1C13-4E47-877B-3BDB752CE2D7}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -16,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module", "Module", "{72C9F2FD-D7ED-4112-9F21-F5E40497D3CD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{3C75FAB8-A837-4A80-8CD8-C8D0409E0B52}"
 	ProjectSection(SolutionItems) = preProject
 		pack.ps1 = pack.ps1
@@ -25,26 +19,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{3C75FAB8
 		build\Sitecore.React.Nuget\Sitecore.React.Web.nuspec = build\Sitecore.React.Nuget\Sitecore.React.Web.nuspec
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{DA3EC9D0-3BEA-4C9F-B145-7227782E4EFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "React", "React", "{8DF0CC85-CBCE-4BCC-9A18-E3A8BCE0AC9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foundation.React", "src\Foundation\React\code\Foundation.React.csproj", "{38CC2BFD-69A8-4A1F-88FE-DD69E0BF547E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A44D104F-02FC-4F13-8F78-C265E861B572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A44D104F-02FC-4F13-8F78-C265E861B572}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A44D104F-02FC-4F13-8F78-C265E861B572}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A44D104F-02FC-4F13-8F78-C265E861B572}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC2C5218-7C4E-4010-820B-8F2593E77AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC2C5218-7C4E-4010-820B-8F2593E77AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC2C5218-7C4E-4010-820B-8F2593E77AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC2C5218-7C4E-4010-820B-8F2593E77AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38CC2BFD-69A8-4A1F-88FE-DD69E0BF547E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38CC2BFD-69A8-4A1F-88FE-DD69E0BF547E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38CC2BFD-69A8-4A1F-88FE-DD69E0BF547E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38CC2BFD-69A8-4A1F-88FE-DD69E0BF547E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A44D104F-02FC-4F13-8F78-C265E861B572} = {72C9F2FD-D7ED-4112-9F21-F5E40497D3CD}
-		{EC2C5218-7C4E-4010-820B-8F2593E77AE3} = {72C9F2FD-D7ED-4112-9F21-F5E40497D3CD}
+		{8DF0CC85-CBCE-4BCC-9A18-E3A8BCE0AC9A} = {DA3EC9D0-3BEA-4C9F-B145-7227782E4EFD}
+		{38CC2BFD-69A8-4A1F-88FE-DD69E0BF547E} = {8DF0CC85-CBCE-4BCC-9A18-E3A8BCE0AC9A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C537521-ADEE-4C3C-A789-47B984EC75F3}
 	EndGlobalSection
 EndGlobal

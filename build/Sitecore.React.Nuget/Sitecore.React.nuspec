@@ -12,19 +12,19 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>A module for creating Sitecore components using React</description>
         <releaseNotes>https://github.com/GuitarRich/sitecore.react</releaseNotes>
-        <copyright>Richard Seal (c) 2016-2017</copyright>
+        <copyright>Richard Seal (c) 2016-2019</copyright>
         <language />
         <tags>Sitecore, React, ReactJS</tags>
         <dependencies>
             <group targetFramework=".NETFramework0.0">
-                <dependency id="React.Web.Mvc4" version="3.0.1" />
-                <dependency id="System.Web.Optimization.React" version="3.0.1" />
-                <dependency id="WebGrease" version="1.5.2" />
-                <dependency id="Antlr" version="3.4.1" />
+                <dependency id="React.Web.Mvc4" version="4.1.1" />
+                <dependency id="System.Web.Optimization.React" version="4.1.1" />
+                <dependency id="WebGrease" version="1.6.0" />
+                <dependency id="Antlr" version="3.5.0" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="..\..\src\Sitecore.React\bin\Sitecore.React.dll" target="lib\net452\Sitecore.React.dll" />
+        <file src="..\..\src\Sitecore.React\bin\Sitecore.React.dll" target="lib\net472\Sitecore.React.dll" />
     </files>
 </package>
