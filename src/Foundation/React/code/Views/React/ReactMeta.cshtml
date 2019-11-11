@@ -1,0 +1,12 @@
+﻿@using System.Web.Optimization
+
+@{
+    Layout = Sitecore.Configuration.Settings.GetSetting("XA.Foundation.Presentation.MetaComponentLayoutPath", "../SXA/Meta Component Layout.cshtml");
+}
+<script async src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.13/es5-shim.min.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.13/es5-sham.min.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-shim.min.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.5/es6-sham.min.js"></script>
+<script crossorigin src="//unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="//unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+@Scripts.Render("~/bundles/react")

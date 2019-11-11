@@ -1,0 +1,14 @@
+﻿---
+ID: "e573d77d-3133-453f-a588-2d533d2a469d"
+Parent: "f31db7e6-605c-4ef3-84c8-4238961f5649"
+Template: "f31db7e6-605c-4ef3-84c8-4238961f5649"
+Path: /sitecore/templates/Foundation/React/Renderings/React Controller Rendering/__Standard Values
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20160714T234119Z
