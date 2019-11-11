@@ -1,0 +1,62 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+
+name: sitecorereact_$(SourceBranchName)_$(Date:yyyy-MM-dd)$(Rev:.rr)
+
+pool:
+  vmImage: 'windows-2019'
+
+variables:
+  solution: 'Sitecore.React.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- checkout: self
+  persistCredentials: true
+
+- task: NuGetToolInstaller@0
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+    feedsToUse: config
+    nugetConfigPath: 'nuget.config'
+  continueOnError: false
+
+- task: VSBuild@1
+  condition: and(ne(variables['Build.SourceBranch'], 'refs/heads/master'), not(canceled()))
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/m'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+  continueOnError: false
+
+- task: VSBuild@1
+  displayName: VSBuild and Generate Package
+  condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/master'), not(canceled()))
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/m /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:PublishProfile=Package /p:SkipInvalidConfigurations=true /p:PackageLocation="$(Build.ArtifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+  continueOnError: false
+
+- task: CopyFiles@2
+  displayName: Copy the build to the staging directory
+  condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/master'), not(canceled()))
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)/build/webdeploy'
+    contents: '**/*' 
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishPipelineArtifact@0
+  displayName: Publish build artifact
+  condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/master'), not(canceled()))
+  inputs:
+    artifactName: 'sitecore.react'
+    targetPath: '$(Build.ArtifactStagingDirectory)'
