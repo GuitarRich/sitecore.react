@@ -5,6 +5,7 @@ namespace Foundation.React.Configuration
         bool UseDebugReactScript { get; set; }
         string DynamicPlaceholderType { get; set; }
         string BundleName { get; set; }
+        bool UseCamelCasePropertyNames { get; set; }
         bool EnableClientSide { get; set; }
         bool DisableClientSideWhenEditing { get; set; }
         string BundleType { get; set; }

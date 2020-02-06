@@ -5,6 +5,7 @@ using Foundation.React.Configuration;
 using Foundation.React.Mvc;
 using JavaScriptEngineSwitcher.Core;
 using JavaScriptEngineSwitcher.V8;
+using Newtonsoft.Json.Serialization;
 using System.Web.Hosting;
 using System.IO;
 using System.Linq;
@@ -19,9 +20,9 @@ namespace Foundation.React
 {
     [ExcludeFromCodeCoverage]
     public static class ReactConfig
-	{
-		public static void Configure()
-		{
+    {
+        public static void Configure()
+        {
             // Initialize the JavaScript Engine for the application. Default to the V8 engine
             IJsEngineSwitcher engineSwitcher = JsEngineSwitcher.Current;
             engineSwitcher.EngineFactories.Clear();
@@ -30,10 +31,15 @@ namespace Foundation.React
             engineSwitcher.DefaultEngineName = V8JsEngine.EngineName;
 
             ViewEngines.Engines.Add(new JsxViewEngine());
-			ReactSiteConfiguration.Configuration.SetReuseJavaScriptEngines(true);
+            ReactSiteConfiguration.Configuration.SetReuseJavaScriptEngines(true);
 
-		    if (ReactSettingsProvider.Current.BundleType == "webpack")
-		    {
+            if (ReactSettingsProvider.Current.UseCamelCasePropertyNames)
+            {
+                ReactSiteConfiguration.Configuration.JsonSerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            }
+
+            if (ReactSettingsProvider.Current.BundleType == "webpack")
+            {
                 ReactSiteConfiguration.Configuration
                     .SetUseDebugReact(ReactSettingsProvider.Current.UseDebugReactScript)
                     .SetLoadBabel(false)
@@ -69,5 +75,5 @@ namespace Foundation.React
                 BundleTable.Bundles.Add(bundle);
             }
         }
-	}
+    }
 }
